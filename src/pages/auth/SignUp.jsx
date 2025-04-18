@@ -1,17 +1,15 @@
 import React from "react";
 import sc2 from "../../assets/images/sc2.jpg";
 
-
 const SignUp = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{
-      backgroundImage: `url(${sc2})`,
-      filter: 'brightness(0.85)',
-    }}>
-     
-               
-               
-              
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-center"
+      style={{
+        backgroundImage: `url(${sc2})`,
+        filter: "brightness(0.85)",
+      }}
+    >
       <div className="flex w-full max-w-2xl min-h-2.5  bg-white  shadow-lg overflow-hidden">
         {/* Left Section: Signup Form */}
         <div className="w-1/2 p-8 flex flex-col justify-center">
