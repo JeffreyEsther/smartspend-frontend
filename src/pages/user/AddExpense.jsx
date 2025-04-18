@@ -34,7 +34,7 @@ const AddExpense = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#150a55] text-white p-4 w-full mx-auto">
+    <div className="min-h-screen bg-[#1b0c6c] text-white p-4 w-full mx-auto">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-xl md:text-2xl font-bold">New expense</h1>
         <button className="text-white">
