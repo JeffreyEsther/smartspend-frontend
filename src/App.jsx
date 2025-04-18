@@ -13,6 +13,8 @@ import Settings from "./pages/dashboard/Settings";
 import Wishlist from "./pages/dashboard/Wishlist";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
+import AddExpense from "./pages/user/AddExpense";
+import AddIncome from "./pages/user/AddIncome";
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
         <Route path="/" element={<PagesLayout />}>
           <Route path="login" element={<Login />} />
           <Route path="signup" element={<SignUp />} />
+          <Route path="add-expense" element={<AddExpense />} />
+          <Route path="add-income" element={<AddIncome />} />
           <Route index={true} element={<Home />} />
         </Route>
 
