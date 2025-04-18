@@ -102,7 +102,7 @@ const Navbar = () => {
 
             <Link
               to="/signup"
-              className="bg-blue-600 hover:bg-blue-700 transition-colors px-4 py-2 rounded-md text-sm font-medium"
+              className="bg-[#360e99] hover:bg-[#dc7a7ad9] transition-colors px-4 py-2 rounded-md text-sm font-medium"
             >
               Sign Up
             </Link>

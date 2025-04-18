@@ -34,7 +34,7 @@ const AddExpense = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#1b0c6c] text-white p-4 w-full mx-auto">
+    <div className="min-h-screen bg-[#ab8383] text-white p-4 w-full mx-auto">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-xl md:text-2xl font-bold">New expense</h1>
         <button className="text-white">
@@ -105,7 +105,7 @@ const AddExpense = () => {
                   name="currency"
                   value={formData.currency}
                   onChange={handleChange}
-                  className="w-full bg-pink-700 border border-gray-700 rounded p-2 text-white"
+                  className="w-full bg-blue-700 border rounded p-2 text-white"
                 >
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
@@ -213,7 +213,7 @@ const AddExpense = () => {
           <button 
             type="button"
             onClick={handleDraft} 
-            className="bg-teal-500 text-white px-3 md:px-4 py-2 rounded text-sm md:text-base"
+            className="bg-blue-700 text-white px-3 md:px-4 py-2 rounded text-sm md:text-base"
           >
             Save draft
           </button>

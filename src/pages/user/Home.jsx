@@ -20,7 +20,7 @@ const Home = () => {
           {/* Center content area - moved to middle (yellow circle area) */}
           <div className="absolute inset-0 flex items-center justify-center">
             {/* Content container with semi-transparent background */}
-            <div className="bg-white/30 backdrop-blur-sm rounded-lg p-8 md:p-10 max-w-lg">
+            <div className="bg-white/50 backdrop-blur-sm rounded-lg p-8 md:p-10 max-w-lg">
               {/* Heading text */}
               <h1 className="text-black font-bold text-3xl md:text-4xl lg:text-5xl mb-2">
                 100% Natural Extracts.
@@ -28,19 +28,19 @@ const Home = () => {
 
               {/* Subheading with colored text */}
               <h2 className="text-black font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-                Be <span className="text-pink-700">desirable.</span>
+                Be <span className="text-[#360e99]">desirable.</span>
               </h2>
 
               {/* Description text */}
               <p className="text-black text-base md:text-lg mb-8 max-w-md">
-                Sourcing our ingredients from women, we bring shea butter, black soap, neem &
-                other natural raw ingredients to life so you can be nurtured.
+              The smartest way to manage your money. Track earnings, monitor
+              expenses, and take control of your finances with ease.
               </p>
 
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  className="bg-pink-700 hover:bg-blue-600 transition-colors px-6 py-3 rounded-md text-white font-semibold"
+                  className="bg-[#360e99] hover:bg-red-600 transition-colors px-6 py-3 rounded-md text-white font-semibold"
                   onMouseEnter={() => setIsHovering(true)}
                   onMouseLeave={() => setIsHovering(false)}
                 >
