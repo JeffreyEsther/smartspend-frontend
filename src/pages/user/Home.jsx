@@ -23,12 +23,12 @@ const Home = () => {
             <div className="bg-white/50 backdrop-blur-sm rounded-lg p-8 md:p-10 max-w-lg">
               {/* Heading text */}
               <h1 className="text-black font-bold text-3xl md:text-4xl lg:text-5xl mb-2">
-                100% Natural Extracts.
+                100% Ways To Become.
               </h1>
 
               {/* Subheading with colored text */}
               <h2 className="text-black font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-                Be <span className="text-[#360e99]">desirable.</span>
+                Weathlhy , <span className="text-[#360e99]">Track Expenses.</span>
               </h2>
 
               {/* Description text */}
