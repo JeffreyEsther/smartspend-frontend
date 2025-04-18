@@ -74,8 +74,24 @@ export default function Income() {
   const totalIncome = incomeEntries.reduce((sum, item) => sum + item.amount, 0);
 
   return (
-    <div className="p-10 bg-[#b5a7a7] text-white h-screen overflow-y-auto">
-      <h2 className="text-2xl font-bold mb-6">Income Overview</h2>
+    <div className="p-10 bg-[#b5a7a7] text-white h-screen overflow-y-auto ">
+     
+
+     <div className="flex justify-between items-center mb-6">
+        <h1 className="text-white text-3xl font-bold">Income Overview</h1>
+        <div className="flex space-x-2">
+          <button className="bg-teal-500 text-white px-4 py-2 rounded flex items-center">
+            <span className="mr-2">+</span> NEW INCOME
+          </button>
+          <button className="bg-gray-700 text-white px-2 py-2 rounded">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+
 
       {/* Summary Box */}
       <div className="bg-[#1f1f1f] border border-gray-700 rounded-lg p-4 mb-6">
