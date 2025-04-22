@@ -30,15 +30,16 @@ export default {
             icon: MdAttachMoney,
         },
         {
-            name: "Settings",
-            path: "/dashboard/settings",
-            icon: IoMdSettings,
-        },
-        {
             name: "Wishlist",
             path: "/dashboard/wishlist",
             icon: CiViewList,
         },
+        {
+            name: "Settings",
+            path: "/dashboard/settings",
+            icon: IoMdSettings,
+        },
+       
        
 
     ],

@@ -18,6 +18,13 @@ const SignUp = () => {
           </h1>
           <p className="text-blue-500 mb-6">Join us today</p>
           <form className="space-y-4">
+          <div>
+              <input
+                type="text"
+                placeholder="Fullname"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
+              />
+            </div>
             <div>
               <input
                 type="text"
@@ -25,6 +32,7 @@ const SignUp = () => {
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
+           
             <div>
               <input
                 type="email"

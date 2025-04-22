@@ -26,9 +26,10 @@ const Settings = () => {
           </h3>
           <div className="space-y-3">
             <select className="w-full p-3 rounded bg-[#0b0b0d] outline-none">
-              <option>English</option>
-              <option>French</option>
-              <option>Spanish</option>
+              <option>USD</option>
+              <option>EUR</option>
+              <option>GBP</option>
+              <option>GHC</option>
             </select>
             <div className="flex items-center gap-3">
               <FiMoon />

@@ -28,7 +28,7 @@ const Home = () => {
 
               {/* Subheading with colored text */}
               <h2 className="text-black font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-                Weathlhy , <span className="text-[#360e99]">Track Expenses.</span>
+                Wealthy , <span className="text-[#360e99]">Track Expenses.</span>
               </h2>
 
               {/* Description text */}
