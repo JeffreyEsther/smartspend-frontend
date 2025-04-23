@@ -1,7 +1,27 @@
 import React from "react";
 import sc2 from "../../assets/images/sc2.jpg";
+import { apiSignup } from "../../services/auth";
 
 const SignUp = () => {
+
+  const handleSubmit = async (event) => {
+		event.preventDefault();
+		const formData = new FormData(event.target);
+		
+
+		try {
+			const response = await apiSignup(formData);
+			console.log(response);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+
+
+
+
+
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-center"
@@ -17,9 +37,12 @@ const SignUp = () => {
             Create an account!
           </h1>
           <p className="text-blue-500 mb-6">Join us today</p>
-          <form className="space-y-4">
+
+
+          <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
               <input
+              name="fullName"
                 type="text"
                 placeholder="Fullname"
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
@@ -27,6 +50,7 @@ const SignUp = () => {
             </div>
             <div>
               <input
+              name="userName"
                 type="text"
                 placeholder="Username"
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
@@ -35,6 +59,7 @@ const SignUp = () => {
            
             <div>
               <input
+              name="email"
                 type="email"
                 placeholder="Email"
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
@@ -42,13 +67,14 @@ const SignUp = () => {
             </div>
             <div>
               <input
+              name="password"
                 type="password"
                 placeholder="Password"
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
             <button
-              type="button"
+              type="submit"
               className="w-full bg-blue-700 text-white p-3 rounded-lg hover:bg-red-500 transition"
             >
               Submit

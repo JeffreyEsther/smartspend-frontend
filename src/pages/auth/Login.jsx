@@ -2,6 +2,35 @@ import React from 'react';
 import sc3 from "../../assets/images/sc3.jpg";
 
 const Login = () => {
+
+//   const navigate = navigate();
+// 	const [showPassword, setShowPassword] = useState(false);
+// const [email, setEmail] = useState("true");
+// const [password, setPassword] = useState("");
+// 	const togglePasswordVisibility = () => {
+// 		setShowPassword(!showPassword);
+// 	};
+
+  const handleSubmit = async (event) => {
+		event.preventDefault();
+		const formData = new FormData(event.target);
+
+		try {
+			const response = await apiLogin(formData);
+			console.log(response);
+
+      const {admin}= response.data  
+			localStorage.setItem("token", response.data.token);
+			localStorage.setItem("admin", admin.role);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+ 
+
+
+
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-cover bg-center" style={{
             backgroundImage: `url(${sc3})`,
@@ -12,18 +41,22 @@ const Login = () => {
         <div className="w-1/2 p-8 flex flex-col justify-center">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">Login to your account!</h1>
           <p className="text-gray-500 mb-6">Welcome back</p>
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <input
-                type="email"
+              name="identifier"
+                type= "text"
                 placeholder="Email or Username"
+                required
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
             <div>
               <input
+              name="password"
                 type="password"
                 placeholder="Password"
+                required
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
