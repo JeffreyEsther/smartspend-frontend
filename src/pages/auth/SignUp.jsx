@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import sc2 from "../../assets/images/sc2.jpg";
-import { apiSignup } from "../../services/auth";
+import { apiSignup } from "../../services/auth"; // Corrected import path
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const [fullName, setFullName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
-		event.preventDefault();
-		const formData = new FormData(event.target);
-		
-
-		try {
-			const response = await apiSignup(formData);
-			console.log(response);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-
-
-
-
+    event.preventDefault();
+    setError("");
+    const userData = {
+      fullName,
+      userName,
+      email,
+      password,
+    };
+    try {
+      const response = await apiSignup(userData);
+      console.log(response);
+      navigate("/login"); // Redirect to login page after successful signup
+    } catch (error) {
+      console.error(error);
+      setError(
+        error.response?.data?.message || "Signup failed. Please try again."
+      );
+    }
+  };
 
   return (
     <div
@@ -30,56 +40,69 @@ const SignUp = () => {
         filter: "brightness(0.85)",
       }}
     >
-      <div className="flex w-full max-w-2xl min-h-2.5  bg-white  shadow-lg overflow-hidden">
-        {/* Left Section: Signup Form */}
+      <div className="flex w-full max-w-2xl min-h-2.5 bg-white shadow-lg overflow-hidden">
         <div className="w-1/2 p-8 flex flex-col justify-center">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
             Create an account!
           </h1>
           <p className="text-blue-500 mb-6">Join us today</p>
-
-
-          <form className="space-y-4" onSubmit={handleSubmit}>
-          <div>
+          {error && (
+            <p className="text-red-500 mb-4" role="alert">
+              {error}
+            </p>
+          )}
+          <div className="space-y-4">
+            <div>
               <input
-              name="fullName"
+                name="fullName"
                 type="text"
                 placeholder="Fullname"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                required
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
             <div>
               <input
-              name="userName"
+                name="userName"
                 type="text"
                 placeholder="Username"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                required
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
-           
             <div>
               <input
-              name="email"
+                name="email"
                 type="email"
                 placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
             <div>
               <input
-              name="password"
+                name="password"
                 type="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
                 className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
               />
             </div>
             <button
-              type="submit"
+              onClick={handleSubmit}
               className="w-full bg-blue-700 text-white p-3 rounded-lg hover:bg-red-500 transition"
             >
               Submit
             </button>
-          </form>
+          </div>
           <div className="flex justify-center mt-6 space-x-4">
             <button className="p-2 border border-gray-300 rounded-full hover:bg-gray-100">
               <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -107,7 +130,6 @@ const SignUp = () => {
             </button>
           </div>
         </div>
-        {/* Right Section: Image */}
         <div className="w-1/2 bg-yellow-100 flex items-center justify-center">
           <img
             src={sc2}
