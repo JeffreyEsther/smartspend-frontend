@@ -23,7 +23,7 @@ const Home = () => {
             <div className="bg-white/50 backdrop-blur-sm rounded-lg p-8 md:p-10 max-w-lg">
               {/* Heading text */}
               <h1 className="text-black font-bold text-3xl md:text-4xl lg:text-5xl mb-2">
-                100% Ways To Become.
+                100% Way To Become.
               </h1>
 
               {/* Subheading with colored text */}
@@ -38,33 +38,7 @@ const Home = () => {
               </p>
 
               {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  className="bg-[#360e99] hover:bg-red-600 transition-colors px-6 py-3 rounded-md text-white font-semibold"
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                >
-                  Sign Up 
-                </button>
-
-                <button className="bg-gray-100 hover:bg-blue-600 transition-colors px-6 py-3 rounded-md text-black font-semibold flex items-center justify-center gap-2">
-                  Login
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              </div>
+             
             </div>
           </div>
 
