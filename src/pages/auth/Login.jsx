@@ -21,9 +21,9 @@ const Login = () => {
     try {
       const response = await apiLogin({ identifier, password });
 
-      const { token, admin } = response.data;
+      const { token } = response.data;
       localStorage.setItem('token', token);
-      localStorage.setItem('admin', admin.role);
+     
 
       navigate('/dashboard');
     } catch (error) {

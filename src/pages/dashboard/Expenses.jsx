@@ -1,25 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router';
+import { apiGetAllExpense } from '../../services/expense';
 
-const expensesData = [
-  { date: '10/17/2022', details: 'Food catering', merchant: 'McFood', amount: '€250.00', report: 'November_2022', status: 'Not submitted' },
-  { date: '10/17/2022', details: 'Office supplies', merchant: 'Offico', amount: '€0.00', report: 'November_2022', status: 'Not submitted' },
-  { date: '10/17/2022', details: 'Business lunch', merchant: 'Restaurant', amount: '€71.50', report: 'November_2022', status: 'Not submitted' },
-  { date: '10/17/2022', details: 'Travel expenses', merchant: 'Airlines', amount: '€480.25', report: 'November_2022', status: 'Submitted' },
-  { date: '10/17/2022', details: 'Client dinner', merchant: 'Bistro', amount: '€120.00', report: 'November_2022', status: 'Not submitted' },
-  { date: '10/17/2022', details: 'Hotel', merchant: 'Hotel', amount: '€275.75', report: 'November_2022', status: 'Submitted' },
-  { date: '10/17/2022', details: 'News subscription', merchant: 'NewsTimes', amount: '€50.00', report: 'November_2022', status: 'Not submitted' },
-];
+
 
 const Expenses = () => {
+
+  const [expenses, setExpenses] = useState([]);
+
+  const fetchExpenses = async () => {
+		try {
+			const response = await apiGetAllExpense();
+			setExpenses(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+  useEffect(() => {
+		fetchExpenses();
+	}, []);
+
+
   return (
     <div className="p-10 bg-[#a89b9b] text-white h-screen overflow-y-auto">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-white text-3xl font-bold">EXPENSES</h1>
         <div className="flex space-x-2">
-          <button className="bg-teal-500 text-white px-4 py-2 rounded flex items-center">
+          <Link to={'/add-expense'} className="bg-teal-500 text-white px-4 py-2 rounded flex items-center">
             <span className="mr-2">+</span> NEW EXPENSE
-          </button>
+          </Link>
           <button className="bg-gray-700 text-white px-2 py-2 rounded">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -39,7 +50,7 @@ const Expenses = () => {
 
       {/* Scrollable Table Body */}
       <div className="p-10 bg-[#a39999] text-white h-screen ">
-        {expensesData.map((expense, index) => (
+        {expenses.map((expense, index) => (
           <div
             key={index}
             className="grid grid-cols-5 gap-4 items-center bg-black rounded-lg p-4 mb-2 text-white text-sm"

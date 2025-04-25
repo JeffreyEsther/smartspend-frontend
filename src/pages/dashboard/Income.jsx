@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
+import { apiGetAllIncome } from "../../services/income";
 
 const incomeEntries = [
   {
@@ -70,7 +72,28 @@ const categoryColors = {
   Car: "bg-yellow-500",
 };
 
+
+
+
 export default function Income() {
+
+  const [income, setIncome] = useState([]);
+
+  const fetchIncome = async () => {
+    try {
+      const response = await apiGetAllIncome();
+      setIncome(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchIncome();
+  }, []);
+
+
+
   const totalIncome = incomeEntries.reduce((sum, item) => sum + item.amount, 0);
 
   return (
@@ -80,9 +103,9 @@ export default function Income() {
      <div className="flex justify-between items-center mb-6">
         <h1 className="text-white text-3xl font-bold">Income Overview</h1>
         <div className="flex space-x-2">
-          <button className="bg-teal-500 text-white px-4 py-2 rounded flex items-center">
+          <Link to={'/add-income'} className="bg-teal-500 text-white px-4 py-2 rounded flex items-center">
             <span className="mr-2">+</span> NEW INCOME
-          </button>
+          </Link>
           <button className="bg-gray-700 text-white px-2 py-2 rounded">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -112,19 +135,19 @@ export default function Income() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-700">
-            {incomeEntries.map((entry, idx) => (
-              <tr key={idx} className="hover:bg-[#222] transition-all">
-                <td className="px-6 py-4 font-medium">{entry.source}</td>
+            {income.map((income, index) => (
+              <tr key={index} className="hover:bg-[#222] transition-all">
+                <td className="px-6 py-4 font-medium">{income.source}</td>
                 <td className="px-6 py-4">
                   <span
-                    className={`text-white px-3 py-1 rounded-full text-xs ${categoryColors[entry.category]}`}
+                    className={`text-white px-3 py-1 rounded-full text-xs ${categoryColors[income.category]}`}
                   >
-                    {entry.category}
+                    {income.category}
                   </span>
                 </td>
-                <td className="px-6 py-4 font-semibold">€{entry.amount.toFixed(2)}</td>
-                <td className="px-6 py-4">{entry.frequency}</td>
-                <td className="px-6 py-4">{new Date(entry.date).toLocaleDateString()}</td>
+                <td className="px-6 py-4 font-semibold">€{income.amount.toFixed(2)}</td>
+                <td className="px-6 py-4">{income.frequency}</td>
+                <td className="px-6 py-4">{new Date(income.date).toLocaleDateString()}</td>
               </tr>
             ))}
           </tbody>
